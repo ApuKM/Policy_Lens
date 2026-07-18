@@ -1,0 +1,79 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+/* Ensure HeroUI theme tokens in node_modules are picked up by Tailwind v4 */
+@source "../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+
+/* ============================================================
+   PolicyLens Design System — Tailwind v4 CSS-first theme
+   Primary palette: Deep Navy · Civic Gold · Off-White
+   ============================================================ */
+@theme inline {
+  /* ── Deep Navy ─────────────────────────────────────── */
+  --color-navy-50:  #eef1f7;
+  --color-navy-100: #cdd5e6;
+  --color-navy-200: #9baece;
+  --color-navy-300: #6987b6;
+  --color-navy-400: #3d649f;
+  --color-navy-500: #1a3a6b;   /* base */
+  --color-navy-600: #152f58;
+  --color-navy-700: #0f2345;
+  --color-navy-800: #091832;
+  --color-navy-900: #040c1f;
+
+  /* ── Civic Gold ─────────────────────────────────────── */
+  --color-gold-50:  #fefbec;
+  --color-gold-100: #fdf2c2;
+  --color-gold-200: #fae285;
+  --color-gold-300: #f7ce47;
+  --color-gold-400: #f4ba18;
+  --color-gold-500: #d4960a;   /* base */
+  --color-gold-600: #aa7507;
+  --color-gold-700: #7e5505;
+  --color-gold-800: #533703;
+  --color-gold-900: #291a01;
+
+  /* ── Off-White / Neutral ────────────────────────────── */
+  --color-offwhite-50:  #fafaf8;
+  --color-offwhite-100: #f5f4f0;
+  --color-offwhite-200: #eceae4;
+  --color-offwhite-300: #d8d5cc;
+  --color-offwhite-400: #bfbbb0;
+  --color-offwhite-500: #a09b8e;
+  --color-offwhite-600: #7a756a;
+  --color-offwhite-700: #5a5650;
+  --color-offwhite-800: #3a3832;
+  --color-offwhite-900: #1e1c18;
+
+  /* ── Semantic aliases ───────────────────────────────── */
+  --color-primary:   var(--color-navy-500);
+  --color-accent:    var(--color-gold-500);
+  --color-surface:   var(--color-offwhite-100);
+  --color-background: var(--color-offwhite-50);
+  --color-foreground: var(--color-navy-800);
+
+  /* ── Typography ─────────────────────────────────────── */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* ── Base styles ────────────────────────────────────────── */
+:root {
+  --background: var(--color-offwhite-50);
+  --foreground: var(--color-navy-800);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--color-navy-900);
+    --foreground: var(--color-offwhite-100);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
