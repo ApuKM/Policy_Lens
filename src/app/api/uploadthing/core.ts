@@ -36,10 +36,10 @@ export const ourFileRouter = {
 
   /**
    * Policy document uploads (PDF, DOCX).
-   * Max 16 MB, up to 5 files per request. Requires authenticated session.
+   * Max 8 MB, up to 5 files per request. Requires authenticated session.
    */
-  policyDocumentUploader: f({
-    pdf: { maxFileSize: "16MB", maxFileCount: 5 },
+  policyUploader: f({
+    pdf: { maxFileSize: "8MB", maxFileCount: 5 },
   })
     .middleware(async () => {
       const session = await auth.api.getSession({

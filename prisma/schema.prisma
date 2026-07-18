@@ -22,6 +22,7 @@ model User {
 
   sessions Session[]
   accounts Account[]
+  policies Policy[]
 }
 
 model Session {
@@ -62,4 +63,20 @@ model Verification {
   expiresAt  DateTime
   createdAt  DateTime? @default(now())
   updatedAt  DateTime? @updatedAt
+}
+
+model Policy {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  title            String
+  shortDescription String
+  fullText         String
+  category         String
+  status           String
+  pdfUrl           String
+  aiSummary        String
+  aiActionItems    String[]
+  authorId         String   @db.ObjectId
+  author           User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 }
