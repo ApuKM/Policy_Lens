@@ -9,7 +9,9 @@ import { createAuthClient } from "better-auth/react";
  *   await authClient.signOut();
  */
 export const authClient = createAuthClient({
-  baseURL: process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
+  // Point the client at the Better Auth HTTP handler route so sign-in/out
+  // requests are sent to the correct API endpoint.
+  baseURL: (process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000") + "/api/auth",
 });
 
 export type Session = typeof authClient.$Infer.Session;

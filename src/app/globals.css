@@ -1,14 +1,8 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
-/* Ensure HeroUI theme tokens in node_modules are picked up by Tailwind v4 */
-@source "../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
-
-/* ============================================================
-   PolicyLens Design System — Tailwind v4 CSS-first theme
-   Primary palette: Deep Navy · Civic Gold · Off-White
-   ============================================================ */
-@theme inline {
+/* Inline theme tokens (replaces unsupported @source/@theme rules) */
+:root {
   /* ── Deep Navy ─────────────────────────────────────── */
   --color-navy-50:  #eef1f7;
   --color-navy-100: #cdd5e6;

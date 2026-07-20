@@ -1,6 +1,6 @@
 "use client";
 
-import { Card } from "@heroui/react";
+import { Card, CardContent } from "@heroui/react";
 import { FileText, Globe, Users, Zap, BookOpen, Award } from "lucide-react";
 
 const stats = [
@@ -87,7 +87,7 @@ export function Statistics() {
                 key={idx}
                 className="bg-white dark:bg-[#091832] border border-[#eceae4] dark:border-[#152f58] rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
               >
-                <Card.Content className="p-8 relative flex flex-col gap-2">
+                <CardContent className="p-8 relative flex flex-col gap-2">
                   {/* Accent line */}
                   <div
                     className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
@@ -117,7 +117,7 @@ export function Statistics() {
 
                   {/* Sub-label */}
                   <p className="text-sm text-[#7a756a] dark:text-[#9baece]">{stat.sub}</p>
-                </Card.Content>
+                </CardContent>
               </Card>
             );
           })}

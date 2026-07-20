@@ -1,6 +1,6 @@
 "use client";
 
-import { Card } from "@heroui/react";
+import { Card, CardContent } from "@heroui/react";
 import { Upload, Cpu, FileText } from "lucide-react";
 
 const steps = [
@@ -86,7 +86,7 @@ export function HowItWorks() {
                 </div>
 
                 <Card className="w-full bg-white dark:bg-[#091832] border border-[#eceae4] dark:border-[#152f58] shadow-sm hover:shadow-lg transition-shadow duration-300 rounded-2xl">
-                  <Card.Content className="p-6 flex flex-col items-center gap-3">
+                  <CardContent className="p-6 flex flex-col items-center gap-3">
                     <span className="text-xs font-black tracking-widest text-[#a09b8e] dark:text-[#6987b6]">
                       STEP {s.step}
                     </span>
@@ -96,7 +96,7 @@ export function HowItWorks() {
                     <p className="text-sm text-[#7a756a] dark:text-[#9baece] leading-relaxed">
                       {s.description}
                     </p>
-                  </Card.Content>
+                  </CardContent>
                 </Card>
               </div>
             );

@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardHeader, Input, Button, Link } from "@heroui/react";
+import { Card, CardContent, CardHeader, Input, Button, Link } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import NextLink from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -38,16 +39,13 @@ export default function LoginPage() {
   };
 
   const handleDemoLogin = async () => {
-    // Fill the state so the user sees it (optional, but good for demo)
     const demoEmail = "demo@policylens.app";
     const demoPassword = "Password123!";
     setEmail(demoEmail);
     setPassword(demoPassword);
-
     setIsLoading(true);
     setError(null);
 
-    // Call Better Auth to login with these credentials
     await authClient.signIn.email({
       email: demoEmail,
       password: demoPassword,
@@ -65,13 +63,13 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex flex-1 items-center justify-center p-4">
-      <Card className="w-full max-w-md p-4">
-        <CardHeader className="flex flex-col gap-1 items-center">
+    <div className="flex flex-1 items-center justify-center p-4 min-h-[calc(100vh-4rem)]">
+      <Card className="w-full max-w-md shadow-xl border border-default-200">
+        <CardHeader className="flex flex-col gap-1 items-center px-8 pt-8 pb-4">
           <h1 className="text-2xl font-bold">Welcome Back</h1>
           <p className="text-sm text-default-500">Sign in to your account</p>
         </CardHeader>
-        <Card.Content>
+        <CardContent className="px-8 pb-8 flex flex-col gap-4">
           <form className="flex flex-col gap-4" onSubmit={handleLogin}>
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-medium text-foreground">Email</label>
@@ -94,40 +92,43 @@ export default function LoginPage() {
               />
             </div>
 
-            {error && <p className="text-sm text-danger">{error}</p>}
+            {error && (
+              <div className="p-3 rounded-lg bg-danger/10 border border-danger/20 text-danger text-sm">
+                {error}
+              </div>
+            )}
 
-            <Button
-              variant="primary"
+            <button
               type="submit"
-              isDisabled={isLoading}
-              className="mt-2"
+              disabled={isLoading}
+              className="mt-2 w-full px-4 py-2 rounded-xl bg-[#1a3a6b] hover:bg-[#152f58] text-white font-semibold"
             >
-              Sign In
-            </Button>
+              {isLoading ? "Signing in..." : "Sign In"}
+            </button>
           </form>
 
-          <div className="flex items-center gap-4 py-4">
+          <div className="flex items-center gap-4 py-2">
             <div className="flex-1 h-px bg-default-200" />
             <p className="text-sm text-default-500">OR</p>
             <div className="flex-1 h-px bg-default-200" />
           </div>
 
-          <Button
-            variant="secondary"
-            onPress={handleDemoLogin}
-            isDisabled={isLoading}
-            className="w-full"
+          <button
+            type="button"
+            onClick={handleDemoLogin}
+            disabled={isLoading}
+            className="w-full px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold"
           >
             Login as Demo User
-          </Button>
+          </button>
 
-          <p className="text-center text-sm text-default-500 mt-6">
+          <p className="text-center text-sm text-default-500">
             Don&apos;t have an account?{" "}
-            <Link href="/register" className="text-sm">
+            <NextLink href="/register" className="text-primary text-sm font-medium hover:underline">
               Sign up
-            </Link>
+            </NextLink>
           </p>
-        </Card.Content>
+        </CardContent>
       </Card>
     </div>
   );

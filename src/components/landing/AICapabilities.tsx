@@ -1,6 +1,6 @@
 "use client";
 
-import { Card } from "@heroui/react";
+import { Card, CardContent } from "@heroui/react";
 import {
   ScanText,
   Network,
@@ -107,7 +107,7 @@ export function AICapabilities() {
                 key={idx}
                 className="bg-[#152f58]/60 border border-[#3d649f]/40 rounded-2xl backdrop-blur-sm hover:bg-[#152f58] hover:border-[#6987b6] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group"
               >
-                <Card.Content className="p-6 flex flex-col gap-4">
+                <CardContent className="p-6 flex flex-col gap-4">
                   {/* Icon + Tag row */}
                   <div className="flex items-start justify-between">
                     <div
@@ -133,7 +133,7 @@ export function AICapabilities() {
                   <p className="text-sm text-[#9baece] leading-relaxed">
                     {cap.description}
                   </p>
-                </Card.Content>
+                </CardContent>
               </Card>
             );
           })}

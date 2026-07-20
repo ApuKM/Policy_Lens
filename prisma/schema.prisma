@@ -7,12 +7,13 @@ generator client {
 
 datasource db {
   provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
 // ── Better Auth required models ─────────────────────────────────────────────
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  id            String    @id @default(cuid()) @map("_id")
   name          String
   email         String    @unique
   emailVerified Boolean   @default(false)
@@ -26,20 +27,19 @@ model User {
 }
 
 model Session {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(cuid()) @map("_id")
   expiresAt DateTime
   token     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   ipAddress String?
   userAgent String?
-
-  userId String @db.ObjectId
+  userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Account {
-  id                    String    @id @default(auto()) @map("_id") @db.ObjectId
+  id                    String    @id @default(cuid()) @map("_id")
   accountId             String
   providerId            String
   accessToken           String?
@@ -51,13 +51,12 @@ model Account {
   password              String?
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
-
-  userId String @db.ObjectId
+  userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Verification {
-  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  id         String    @id @default(cuid()) @map("_id")
   identifier String
   value      String
   expiresAt  DateTime
@@ -66,7 +65,7 @@ model Verification {
 }
 
 model Policy {
-  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  id               String   @id @default(cuid()) @map("_id")
   title            String
   shortDescription String
   fullText         String
@@ -75,7 +74,7 @@ model Policy {
   pdfUrl           String
   aiSummary        String
   aiActionItems    String[]
-  authorId         String   @db.ObjectId
+  authorId         String
   author           User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt

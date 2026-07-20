@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, Button } from "@heroui/react";
+import { Card, CardContent, Button } from "@heroui/react";
 import { TrendingUp, ArrowRight } from "lucide-react";
 
 const policies = [
@@ -117,7 +117,7 @@ export function TrendingPolicies() {
               key={policy.id}
               className="bg-white dark:bg-[#0f2345] border border-[#eceae4] dark:border-[#1a3a6b] rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
             >
-              <Card.Content className="p-5 flex flex-col gap-3">
+              <CardContent className="p-5 flex flex-col gap-3">
                 {/* Top row */}
                 <div className="flex items-center justify-between">
                   <span
@@ -155,7 +155,7 @@ export function TrendingPolicies() {
                     {policy.complexity} Complexity
                   </span>
                 </div>
-              </Card.Content>
+              </CardContent>
             </Card>
           ))}
         </div>
