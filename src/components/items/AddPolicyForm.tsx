@@ -131,6 +131,7 @@ export function AddPolicyForm() {
             </div>
           ) : (
             <div>
+          
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-3">
                 <UploadButton
                   endpoint="policyUploader"

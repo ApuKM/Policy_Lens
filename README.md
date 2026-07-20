@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+PolicyLensAn AI-powered civic and legal technology platform designed to make complex local laws, city ordinances, and tech regulations accessible to everyday citizens, startup founders, and community leaders. PolicyLens automatically translates dense legal jargon into plain English, empowering users to quickly understand how upcoming or passed legislation affects them.🚀 Live Demo & RepositoryLive Website URL: [Insert Live URL here]Frontend & Backend Repository: [Insert GitHub Repository URL here]✨ Core Features🧠 Agentic AI CapabilitiesAI Document Intelligence (Feature F): When a contributor uploads a dense legal PDF, the system automatically parses the text and passes it through an LLM. It generates a plain-English, 3-sentence summary alongside a structured extraction of key action items and impacts.Context-Aware AI Chat Assistant (Feature C): Every policy details page features an embedded, interactive chat assistant powered by the Vercel AI SDK. The assistant uses the specific text of that policy as its knowledge base, allowing users to ask targeted, situational questions (e.g., "How does this affect small software businesses?").🖥️ Full-Stack & UI FeaturesDynamic Policy Directory: A public-facing, grid-based discovery system with 4 cards per row on desktop. Users can search and filter legislation seamlessly by Category and Status.Authenticated Contributor Dashboard: A secure section allowing verified contributors to upload new policy documents via a drag-and-drop file interface, as well as manage or delete past submissions.Secure Cloud Storage: Integrated with UploadThing for fast, production-ready, and secure legal PDF hosting.Mathematical UI Consistency: Built strictly with HeroUI and Tailwind CSS to maintain uniform component shapes, unified border-radiuses, typography, and fluid mobile responsiveness.Production-Ready Authentication: Powered by Better Auth with complete route protection, route redirection, and a dedicated Demo Login capability for graders.🛠️ Technology StackLayerTechnology UsedFrontend FrameworkNext.js 15 (App Router) & TypeScriptUI & StylingHeroUI (NextUI), Tailwind CSS, Lucide React IconsData FetchingTanStack Query (React Query)Database & ORMMongoDB & Prisma ORMAuthenticationBetter Auth (with Google OAuth & Credentials Provider)File StorageUploadThing (Cloud PDF Hosting)AI InfrastructureVercel AI SDK & OpenAI / Gemini APIPDF Parsingpdf-parse⚙️ Environment Variables SetupCreate a .env file in the root directory and configure the following keys:Code snippet# Database Connection
+DATABASE_URL="mongodb+srv://<username>:<password>@cluster.mongodb.net/policylens"
 
-## Getting Started
+# Better Auth Configuration
+BETTER_AUTH_SECRET="your_super_secret_jwt_and_auth_key"
+BETTER_AUTH_URL="http://localhost:3000" # Change to production URL on deployment
 
-First, run the development server:
+# Google OAuth (Required for Social Login)
+GOOGLE_CLIENT_ID="your_google_client_id"
+GOOGLE_CLIENT_SECRET="your_google_client_secret"
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# UploadThing (File Cloud Storage)
+UPLOADTHING_TOKEN="your_uploadthing_token"
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# AI Integration
+OPENAI_API_KEY="your_openai_or_gemini_api_key"
+🏃‍♂️ Getting Started1. Clone the RepositoryBashgit clone https://github.com/your-username/policylens.git
+cd policylens
+2. Install DependenciesBashnpm install
+3. Initialize Prisma ClientBashnpx prisma generate
+4. Run the Development ServerBashnpm run dev
+Open http://localhost:3000 in your browser to view the application.
